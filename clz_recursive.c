@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 }
 
 
-// using recursive skill to count leading zeros in logn time
+// using recursive skill to count leading zeros in logn time?
 int clz_recursive(int value, int bits, int zeros)
 {
   if (bits > 1) {
@@ -25,7 +25,6 @@ int clz_recursive(int value, int bits, int zeros)
     int i;
     for (i = 0; i < bits/2 - 1; i++)
       mask |= (mask << 1);
-
 
     if (mask & value)
       clz_recursive(value >>= bits/2, bits/2, 0 + zeros);
