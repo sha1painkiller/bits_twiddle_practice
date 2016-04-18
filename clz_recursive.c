@@ -20,18 +20,28 @@ int main(int argc, char* argv[])
 // using recursive skill to count leading zeros in logn time?
 int clz_recursive(int value, int bits, int zeros)
 {
+  // check whether bits are divided into the smallest piece
   if (bits > 1) {
     int mask = 1 << (bits/2);
     int i;
+    // prepare for the left half mask
     for (i = 0; i < bits/2 - 1; i++)
       mask |= (mask << 1);
 
+    // mask left side of the value
     if (mask & value)
+      // find 1(s) in the left half, keep checking left half
       clz_recursive(value >>= bits/2, bits/2, 0 + zeros);
     else
+      // no 1(s) in left half, check right half
       clz_recursive(value, bits/2, bits/2 + zeros);
   } else {
-    return zeros;
+    // check last bit
+    if (value)
+      return zeros;
+    else
+      // it is zero at the end. count in.
+      return zeros + 1;
   }
 }
 
