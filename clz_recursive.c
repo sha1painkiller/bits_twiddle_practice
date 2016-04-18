@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
   }
 
   input = atoi(argv[1]);
-  ret = clz_recursive(input, sizeof(int) * 8, 0);
+  ret = clz_recursive(input, sizeof(int) * 8, 0 /* always init with 0 */);
   printf("input[0x%08x]. leading zeros[%d]\n", input, ret);
   return 0;
 }
