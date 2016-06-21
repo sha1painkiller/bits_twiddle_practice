@@ -20,7 +20,7 @@ void inorder (struct btreenode *);
 void main()
 {
     struct btreenode *bt;
-    int req, i = 0, num, a[ ] = { 11, 9, 13, 8, 10, 12, 14, 15, 7 };
+    int req, i = 0, num, a[] = { 11, 9, 13, 8, 10, 12, 14, 15, 7 };
 
     bt = NULL;  /* empty tree */
 
@@ -65,7 +65,7 @@ void insert (struct btreenode **sr, int num)
 
     {
         /* if new data is less, traverse to left */
-    if (num < (*sr)->data)
+        if (num < (*sr)->data)
             insert (&((*sr)->leftchild), num);
         else/* else traverse to right */
 
@@ -89,7 +89,6 @@ void delete (struct btreenode **root, int num)
     parent = x = NULL;
 
     /* call to search function to find the node to be deleted */
-
     search (root, num, &parent, &x, &found);
 
     /* if the node to deleted is not found */
@@ -166,7 +165,7 @@ void search (struct btreenode **root, int num, struct btreenode **par, struct
     while (q != NULL)
     {
         /* if the node to be deleted is found */
-    if (q->data == num)
+        if (q->data == num)
         {
             *found = TRUE;
             *x = q;
