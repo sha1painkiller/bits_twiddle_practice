@@ -11,8 +11,9 @@ int main(int argc, char* argv[])
   }
 
   input = atoi(argv[1]);
-  ret = bitcount_SWAR(input);
+  //ret = bitcount_SWAR(input);
   //ret = bitcount_decomp(input);
+  ret = bitcount_groupProcessing(input);
   printf("input[0x%08x]. bits count[%d]\n", input, ret);
   return 0;
 }
@@ -35,3 +36,21 @@ int bitcount_decomp(int x)
   x = (x & 0x0000ffff) + ((x >> 16) &0x0000ffff);
   return x;
 }
+
+int bitcount_groupProcessing(int x)
+{
+    int ret = 0;
+
+    if (!x) 
+        return ret;
+
+    ret = 1;
+    while((x & (x-1)) != 0)
+    {
+        ret++;
+        x &= (x - 1);
+    }
+
+    return ret;
+}
+
